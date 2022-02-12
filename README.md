@@ -27,8 +27,8 @@ This repository contains important DSA questions for Interviews
 <br/>
 
 
-### Rain Water Trapping.   [problem Link]()<br/>
-1.[Rain water Trapping Solution]()<br/>
+### Rain Water Trapping.   [problem Link](https://practice.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1)<br/>
+1.[Rain water Trapping Solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/Trapping%20Rain%20water)<br/>
 <br/>
 
 ### K largest elements  [problem Link]()<br/>
