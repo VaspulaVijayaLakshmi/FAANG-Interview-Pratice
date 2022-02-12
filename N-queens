@@ -1,4 +1,4 @@
-class Solution{
+class NQueens{
 public:
       
       bool isValid(vector<vector<int>> board,int row,int col,int n){
