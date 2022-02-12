@@ -35,7 +35,7 @@ This repository contains important DSA questions for Interviews
 1.[k largest elements  Solution]()<br/>
 <br/>
 
-### Check if a binary tree is BST or not [problem Link]()<br/>
+### Check if a binary tree is BST or not [problem Link](https://leetcode.com/problems/validate-binary-search-tree/)<br/>
 1.[k largest elements  Solution]()<br/>
 <br/>
 
