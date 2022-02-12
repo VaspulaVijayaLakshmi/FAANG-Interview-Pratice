@@ -2,7 +2,7 @@
 
 This repository contains important DSA questions for Interviews
 
-N-Queen Problem<br/>
+[N-Queen Problem](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/N-queens)<br/>
 Check for subsequence<br/>
 Coin Change | Practice | GeeksforGeeks<br/>
 Print Anagrams Together | Practice | GeeksforGeeks<br/>
