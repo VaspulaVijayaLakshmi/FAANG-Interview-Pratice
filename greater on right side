@@ -1,0 +1,29 @@
+class Solution{
+public:	
+	
+	void nextGreatest(int a[], int n) {
+	    
+	   int curr_greater=a[n-1];
+	   a[n-1]=-1;
+	   
+	   for(int i=n-2;i>=0;i--){
+	       
+	       
+	       
+	       //if the element at curr index greater than curr-greater
+	       //replace it with curr-greater except for last element
+	       if(curr_greater<a[i]){
+	        
+	        int temp=a[i];
+	         a[i]=curr_greater;
+	        curr_greater=temp;
+	       }
+	       
+	       else
+	       a[i]=curr_greater;
+	   }
+	    
+	}
+
+
+};
