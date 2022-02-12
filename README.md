@@ -16,7 +16,7 @@ This repository contains important DSA questions for Interviews
 
  ## This is the base for question 4<br/>
 ### 3. Greater on right side  [Problem link](https://practice.geeksforgeeks.org/problems/greater-on-right-side4305/1) <br/>
-1. [Greater on right side solution](https://practice.geeksforgeeks.org/problems/greater-on-right-side4305/1#)<br/>
+1. [Greater on right side solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/greater%20on%20right%20side)<br/>
 <br/>
 
 
