@@ -1,0 +1,26 @@
+class Solution {
+public:
+    
+    bool isSubsequence(string s, string t) {
+ 
+        int idx1=0;
+        int idx2=0;
+        int count=0;
+        
+        
+        while(idx1<s.length() && idx2<t.length()){
+           
+            if(s[idx1]==t[idx2]){
+                idx1++;
+                idx2++;
+                count++;
+            }
+            
+            else
+                idx2++;
+             }
+        
+        return count == s.length() ? true :false; 
+        
+    }
+};
