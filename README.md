@@ -2,18 +2,32 @@
 
 This repository contains important DSA questions for Interviews
 
- I.  N-Queens problem  [Problem link](https://practice.geeksforgeeks.org/problems/n-queen-problem0315/1#)<br/>
+
+### 1. N-Queens problem  [Problem link](https://practice.geeksforgeeks.org/problems/n-queen-problem0315/1#)<br/>
  1. [n_queens solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/N-queens)<br/>
+<br/>
 
 
-II. Check for subsequence  [Problem link](https://practice.geeksforgeeks.org/problems/check-for-subsequence4930/1#)<br/>
+### 2. Check for subsequence  [Problem link](https://practice.geeksforgeeks.org/problems/check-for-subsequence4930/1#)<br/>
 1. [Check for subsequence Recusive soution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/Check%20for%20Subseqeunce/recursive%20%20solution)<br/>
 2. [Check for subsequence iterative solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/Check%20for%20Subseqeunce/Iterative%20solution)<br/>
+<br/>
 
 
-III.  k largest elements   [Problem link](https://practice.geeksforgeeks.org/problems/greater-on-right-side4305/1) <br/>
+ ## This is the base for question 4<br/>
+### 3. Greater on right side  [Problem link](https://practice.geeksforgeeks.org/problems/greater-on-right-side4305/1) <br/>
+1. [Greater on right side solution](https://practice.geeksforgeeks.org/problems/greater-on-right-side4305/1#)<br/>
+<br/>
 
 
+## This become the base for [Raining water Trapping problem](https://www.geeksforgeeks.org/trapping-rain-water/)<br/>
+## (Variations:  Next greater element to right,left)<br/>
+### 4. Next Greater Element <br/>
+<br/>
+
+
+
+k largest elements 
 IV. Check if a binary tree is BST or not<br/>
 
 V. Count ways to reach nth stair<br/>
@@ -21,7 +35,7 @@ V. Count ways to reach nth stair<br/>
 
 VI. Min Cost path<br/>
 
-VII.  Greater on right side | Practice | GeeksforGeeks Maximum sum increasing subsequence | Practice | GeeksforGeeks<br/>
+VII.   GeeksforGeeks Maximum sum increasing subsequence | Practice | GeeksforGeeks<br/>
 
 
 
