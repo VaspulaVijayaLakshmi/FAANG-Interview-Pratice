@@ -22,7 +22,8 @@ This repository contains important DSA questions for Interviews
 
 ## This become the base for [Raining water Trapping problem](https://www.geeksforgeeks.org/trapping-rain-water/)<br/>
 ## (Variations:  Next greater element to right,left)<br/>
-### 4. Next Greater Element <br/>
+### 4. Next Greater Element  [problem link](https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1) <br/>
+1.[Next Greater Element solution]()
 <br/>
 
 
