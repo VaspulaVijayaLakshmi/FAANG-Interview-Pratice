@@ -7,7 +7,7 @@ This repository contains important DSA questions for Interviews
 
 [Check for subsequence]<br/>
 1. [Check for subsequence Recusive soution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/Check%20for%20Subseqeunce/recursive%20%20solution)<br/>
-2. [Check for subsequence Recusive iterative solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/Check%20for%20Subseqeunce/Iterative%20solution)<br/>
+2. [Check for subsequence iterative solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/Check%20for%20Subseqeunce/Iterative%20solution)<br/>
 
 
 Coin Change | Practice | GeeksforGeeks<br/>
