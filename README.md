@@ -23,44 +23,38 @@ This repository contains important DSA questions for Interviews
 ## This become the base for [Raining water Trapping problem](https://www.geeksforgeeks.org/trapping-rain-water/)<br/>
 ## (Variations:  Next greater element to right,left)<br/>
 ### 4. Next Greater Element  [problem link](https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1) <br/>
-1.[Next Greater Element solution]()
+1.[Next Greater Element solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/Next%20Greater%20Element%20to%20right)<br/>
 <br/>
 
 
+### Rain Water Trapping.   [problem Link]()<br/>
+1.[Rain water Trapping Solution]()<br/>
+<br/>
 
-k largest elements 
-IV. Check if a binary tree is BST or not<br/>
+### K largest elements  [problem Link]()<br/>
+1.[k largest elements  Solution]()<br/>
+<br/>
 
-V. Count ways to reach nth stair<br/>
+### Check if a binary tree is BST or not [problem Link]()<br/>
+1.[k largest elements  Solution]()<br/>
+<br/>
 
 
-VI. Min Cost path<br/>
+ ### Count ways to reach nth stair [problem Link]<br/>
+1.[Count Ways  Solution]()<br/>
+<br/>
+
+### Min Cost path. [problem Link]<br/>
+1.[min cost path solution link]()<br/>
+<br/>
+
+
 
 VII.   GeeksforGeeks Maximum sum increasing subsequence | Practice | GeeksforGeeks<br/>
 
 
 
-Next Greater element in array
-	void nextGreatest(int arr[], int n) {
-	    
-	    stack<int> stk;
-	    for(int i=0;i<n;i++){
-	        stk.push(arr[i]);
-	    }
-	    
-	    vector<int> res(n,-1);
-	    
-	    whil()
-	    
-	    
-	    
-	    for(int i=0;i<n;i++){
-	        a[i]=res[i];
-	    }
-	    
-	}
- 
- 
+
 Coin Change | Practice | GeeksforGeeks<br/>
 Print Anagrams Together | Practice | GeeksforGeeks<br/>
 
