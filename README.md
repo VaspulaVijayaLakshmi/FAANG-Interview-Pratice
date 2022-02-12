@@ -2,7 +2,8 @@
 
 This repository contains important DSA questions for Interviews
 
- I.  N-Queens problem  [Problem link](https://practice.geeksforgeeks.org/problems/n-queen-problem0315/1#) || [solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/N-queens)<br/>
+ I.  N-Queens problem  [Problem link](https://practice.geeksforgeeks.org/problems/n-queen-problem0315/1#)<br/>
+ 1. [n_queens solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/N-queens)<br/>
 
 
 II. Check for subsequence  [Problem link](https://practice.geeksforgeeks.org/problems/check-for-subsequence4930/1#)<br/>
