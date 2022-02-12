@@ -1,0 +1,41 @@
+
+class Solution{
+    public:
+    
+    
+    //we need to find if s is subsequnce of t
+    bool subsequence(string s,string t,int idx1,int idx2){
+        
+        //if s has been traversed that means we have checked all chars of s 
+        // in t.
+        if(idx1==s.length())
+           return true;
+         
+        //if we have traversed all elements in t and havent find any subsequnce
+        //of s we return false
+        if(idx2==t.length())
+          return false;
+        
+        //if both char of s and t are equal, we need to increment both idx1and idx2
+        if(s[idx1]==t[idx2])
+         return subsequence(s,t,idx1+1,idx2+1);
+           
+            
+        else 
+        return subsequence(s,t,idx1,idx2+1);
+    }
+    
+    bool isSubSequence(string s, string t) 
+    {
+        
+       return subsequence(s,t,0,0);
+    }
+};
+
+
+
+
+
+
+
+_______________________________________________________________________________--
