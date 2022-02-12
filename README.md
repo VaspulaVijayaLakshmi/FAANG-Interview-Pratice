@@ -24,6 +24,28 @@ VI. Min Cost path<br/>
 VII.  Greater on right side | Practice | GeeksforGeeks Maximum sum increasing subsequence | Practice | GeeksforGeeks<br/>
 
 
+
+Next Greater element in array
+	void nextGreatest(int arr[], int n) {
+	    
+	    stack<int> stk;
+	    for(int i=0;i<n;i++){
+	        stk.push(arr[i]);
+	    }
+	    
+	    vector<int> res(n,-1);
+	    
+	    whil()
+	    
+	    
+	    
+	    for(int i=0;i<n;i++){
+	        a[i]=res[i];
+	    }
+	    
+	}
+ 
+ 
 Coin Change | Practice | GeeksforGeeks<br/>
 Print Anagrams Together | Practice | GeeksforGeeks<br/>
 
