@@ -1,0 +1,103 @@
+// //TLE
+class Solution {
+ public:
+    
+     int pathsum(vector<vector<int>>& grid,int r,int c){
+        
+         if(r==0 && c==0)return grid[0][0];
+         //here if we return 0 ans will be wrong because int last step min(0,something) gives min as 0
+         //hence if we do go out of boundaries just return max int-max and that path will not be               //considered .when asked abt min or max best return int max or int min accordingly
+         if(r<0|| c<0)return INT_MAX;
+    
+         return grid[r][c]+min(pathsum(grid,r-1,c),pathsum(grid,r,c-1));
+     }
+    
+    
+     int minPathSum(vector<vector<int>>& grid) {
+       int r=grid.size();
+         int c=grid[0].size();
+         
+        return pathsum(grid,r-1,c-1);
+     }
+ };
+
+
+
+
+//dp
+ class Solution {
+ public:
+    
+     int pathsum(vector<vector<int>>& grid,int r,int c){
+        
+         vector<vector<int>> dp(r,vector<int>(c,0));
+        
+         dp[0][0]=grid[0][0];
+        
+         for(int i=1;i<c;i++)
+             dp[0][i]=dp[0][i-1]+grid[0][i];
+        
+        
+         for(int i=1;i<r;i++)
+             dp[i][0]=dp[i-1][0]+grid[i][0];
+        
+         for(int i=1;i<r;i++){
+             for(int j=1;j<c;j++){
+                
+                 dp[i][j]=grid[i][j]+min(dp[i-1][j],dp[i][j-1]);
+             }
+         }
+        
+        
+        return dp[r-1][c-1];
+     }
+    
+    
+     int minPathSum(vector<vector<int>>& grid) {
+        int r=grid.size();
+         int c=grid[0].size();
+         
+        return pathsum(grid,r,c);
+     }
+ };
+
+
+
+
+
+// space optimised dp
+
+ class Solution {
+public:
+int pathsum(vector<vector<int>>& grid,int r,int c){
+    
+   vector<int> prev(c,0);
+    vector<int> dp(c,0);
+    
+    prev[0]=grid[0][0];
+    for(int i=1;i<c;i++) {prev[i]=grid[0][i]+prev[i-1];
+                            //cout<<prev[i]<<"\n";
+                         }
+    
+      for(int i=1;i<r;i++){
+            for(int j=0;j<c;j++){
+                
+                dp[j]=(j==0 ? grid[i][j]+prev[j] : grid[i][j]+min(prev[j],dp[j-1]));
+                //cout<<dp[j]<<"\n";
+            }
+          swap(dp,prev);
+      }
+    
+    return prev[c-1];
+
+}
+    
+     
+    int minPathSum(vector<vector<int>>& grid) {
+       int r=grid.size();
+        int c=grid[0].size();
+         
+       return pathsum(grid,r,c);
+    }
+};
+    
