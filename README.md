@@ -50,8 +50,8 @@ This repository contains important DSA questions for Interviews
 1.[Count Ways  Solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/Count%20ways%20to%20reach%20nth%20stair)<br/>
 <br/>
 
-### 10. Min Cost path  [problem Link]()<br/>
-1.[min cost path solution]()<br/>
+### 10. Min Cost path  [problem Link](https://leetcode.com/problems/minimum-path-sum/)<br/>
+1.[min cost path solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/minimum%20path%20sum)<br/>
 <br/>
 
 
@@ -61,9 +61,12 @@ This repository contains important DSA questions for Interviews
 </br>
 
 
-### 12. Maximum Subarray Problem  [problem link]()<br/>
-1.[maximum Subarray solution]()<br/>
+### 12. Maximum Subarray Problem  [problem link](https://leetcode.com/problems/maximum-subarray/)<br/>
+1.[maximum Subarray solution](https://github.com/VaspulaVijayaLakshmi/GFG-LEETCODE/blob/main/maximum%20subarray)<br/>
 <br/>
+
+
+
 
 
 <!--
