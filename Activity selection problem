@@ -1,0 +1,60 @@
+problem link:
+https://www.geeksforgeeks.org/activity-selection-problem-greedy-algo-1/
+
+problem:
+
+You are given n activities with their start and finish times.
+Select the maximum number of activities that can be performed by a single person, 
+assuming that a person can only work on a single activity at a time. 
+
+
+intution:
+
+The greedy choice is to always pick the next activity whose finish time is least among the 
+remaining activities and the start time
+is more than or equal to the finish time of the previously selected activity. 
+We can sort the activities according to their finishing time so that we always 
+
+consider the next activity as minimum finishing time activity.
+1) Sort the activities according to their finishing time
+
+2) Select the first activity from the sorted array t. 
+
+3) Do the following for the remaining activities in the sorted array. 
+…….a) If the start time of this activity is greater than or equal to the finish 
+time of the previously selected activity then select this activity .
+
+
+
+bool activityCompare(Activitiy s1, Activitiy s2)
+{
+    return (s1.finish < s2.finish);
+}
+
+
+
+void printMaxActivities(Activitiy arr[], int n)
+{
+    // Sort jobs according to finish time
+    sort(arr, arr+n, activityCompare);
+ 
+    int tasks=0;
+    int tasks=0;
+    int end=arr[0][1]
+ 
+    for (int j = 1; j < n; j++)
+    {
+      
+      if (arr[j].first >= endtime)
+      {
+         tasks++;
+         endtime=arr[i].second;
+          
+      }
+    }
+    return tasks;
+}
+
+
+// Activitiy arr[] = {{5, 9}, {1, 2}, {3, 4}, {0, 6}, {5, 7}, {8, 9}};
+
