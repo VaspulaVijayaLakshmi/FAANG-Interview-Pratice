@@ -1,0 +1,95 @@
+problem descrption:
+The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two end nodes
+
+
+Intution:
+_____________
+
+The diameter of a tree T is the largest of the following quantities:
+
+the diameter of T’s left subtree.
+the diameter of T’s right subtree.
+the longest path between leaves that goes through the root of T (this can be computed from the heights of the subtrees of T).
+
+
+
+
+method 1:O(n^2) sol
+
+int height(struct node* node)
+{
+    // base case tree is empty
+    if (node == NULL)
+        return 0;
+ 
+    // If tree is not empty then height = 1 + max of left
+    // height and right heights
+    return 1 + max(height(node->left), height(node->right));
+}
+ 
+
+
+
+//diameter of bt
+
+int diameter(struct node* tree)
+{
+    // base case where tree is empty
+    if (tree == NULL)
+        return 0;
+ 
+    // get the height of left and right sub-trees
+    
+    int lheight = height(tree->left);
+    int rheight = height(tree->right);
+ 
+    // get the diameter of left and right sub-trees
+    
+    int ldiameter = diameter(tree->left);
+    int rdiameter = diameter(tree->right);
+ 
+    // Return max of following three
+    // 1) Diameter of left subtree
+    // 2) Diameter of right subtree
+    // 3) Height of left subtree + height of right subtree + 1
+    
+    return max(lheight + rheight + 1,
+            max(ldiameter, rdiameter));
+}
+
+_________________________________________________________________________________
+
+Method -2  O(n)
+
+ The above implementation can be optimized by calculating the height in the same recursion rather 
+ than calling a height() separately.
+ 
+
+ Diameter of a tree can be calculated by only using the height function, because the diameter of a tree
+ is nothing but maximum value of (left_height + right_height + 1) for each node. 
+ So we need to calculate this value (left_height + right_height + 1) for each node and update the result. 
+ 
+ Time complexity – O(n)  
+
+
+
+int diameter(Node* root,int &ans){
+
+if(root==NULL) return 0;
+
+int l=diameter(root->left);
+int r=diameter(root->right);
+
+
+ans=max(ans,1+l+r);
+
+//return which height is bigger 
+//leftsubtree or right subtree
+
+
+return 1+max(l,r);
+
+
+
+
+}
