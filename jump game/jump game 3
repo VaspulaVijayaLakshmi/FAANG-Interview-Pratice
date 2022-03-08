@@ -1,0 +1,102 @@
+Problem link: 
+https://leetcode.com/problems/jump-game-iii/
+
+
+Given an array of non-negative integers arr, you are initially positioned at start index of the array.
+When you are at index i, you can jump to i + arr[i] or i - arr[i], 
+check if you can reach to any index with value 0.
+
+Notice that you can not jump outside of the array at any time.
+
+
+Input: arr = [4,2,3,0,3,1,2], start = 5
+Output: true
+Explanation: 
+All possible ways to reach at index 3 with value 0 are: 
+index 5 -> index 4 -> index 1 -> index 3 
+index 5 -> index 6 -> index 4 -> index 1 -> index 3
+
+
+
+Input: arr = [4,2,3,0,3,1,2], start = 0
+Output: true 
+Explanation: 
+One possible way to reach at index 3 with value 0 is: 
+index 0 -> index 4 -> index 1 -> index 3
+
+
+soluiton explanation:
+https://leetcode.com/problems/jump-game-iii/discuss/1619031/C%2B%2BPython-Simple-Solution-w-Explanation-or-DFS-and-BFS-Traversals
+
+
+
+We are given a starting index (renamed as current index-cur below) from which we have two choices of either jumping from cur to -
+
+cur + A[cur] or,
+cur - A[cur]
+We can try both these possible jumps to see if we reach any index with value 0
+
+In the scenario where it's possible, we will eventually reach an index with value 0 and return true.
+
+But when it is not possible, we would end up in an infinite recursion (as we would just keep trying both jumps for every index
+without ever reaching the target). To avoid this, we need to ensure that we never visit 
+the same index twice. This wont affect the answer because if we had already visited an 
+index earlier, we had already tried out all possibilities and revisiting it again would just lead to endless cycle.
+
+To mark an index as visited, we can either use a boolean array or hashmap and store indices visited in it.
+
+But in the below solution, I am marking an index as visited by making it negative. 
+Then we can check at the start of each recursion if A[cur] < 0 to check
+if it is already visited or not. 
+ if it is alaready vissted means that we will end up solving the possible jumps from index "i" again and again.
+ 
+ DFS: O(N) time and space
+ 
+ class Solution {
+public:
+    bool canReach(vector<int>& A, int cur) {
+        if(cur < 0 || cur >= size(A) || A[cur] < 0) return false;                  // out of bounds OR already visited ? return false
+        
+        
+        A[cur] *= -1;       // mark as visited by making -ve
+        
+        return A[cur]==0 || 
+        canReach(A, cur + A[cur]) 
+        || canReach(A, cur - A[cur]);  // return true if A[cur] == 0 or recurse for both possible jumps
+    }
+};
+
+
+BFS: O(N)
+
+
+We start by pushing the starting index into the queue and iteratively trying both possible jumps from indices in queue.
+
+If we A[cur] 0, we can return true.
+If we reach already visited index (A[cur] < 0), we discard further exploration of this path & continue to next element of queue
+If current index is not visited and value is not equal to 0, further explore both possible jumps from this index by pushing both 
+of it into queue (after proper bounds check).
+
+
+
+class Solution {
+public:
+    bool canReach(vector<int>& A, int cur) {
+        queue<int> q;
+        q.push(cur);
+        while(size(q)) {
+            cur = q.front(); q.pop();
+            if(A[cur] == 0) return true;                        // target reached
+            if(A[cur] < 0)  continue;                           // already visited - stop further exploration of this path
+            if(cur + A[cur] < size(A)) q.push(cur + A[cur]);    // try forward jump and check if it is within the bounds
+            if(cur - A[cur] >= 0)      q.push(cur - A[cur]);    // try backward jump and check if it is within the bounds
+            A[cur] *= -1;                                       // mark current index as visited by negating
+        }
+        return false;             // explored all array without reaching target
+    }
+};
+
+
+
+
+
