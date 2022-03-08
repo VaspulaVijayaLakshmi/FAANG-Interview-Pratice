@@ -1,0 +1,62 @@
+problem link:
+https://leetcode.com/problems/jump-game-vii/
+
+problem:
+
+You are given a 0-indexed binary string s and two integers minJump and maxJump. 
+In the beginning, you are standing at index 0, which is equal to '0'.
+You can move from index i to index j if the following conditions are fulfilled:
+
+==> i + minJump <= j <= min(i + maxJump, s.length - 1), and
+==> s[j] == '0'.
+Return true if you can reach index s.length - 1 in s, or false otherwise.
+
+
+Input: s = "011010", minJump = 2, maxJump = 3
+Output: true
+Explanation:
+In the first step, move from index 0 to index 3. 
+In the second step, move from index 3 to index 5.
+
+
+Input: s = "01101110", minJump = 2, maxJump = 3
+Output: false
+
+
+
+
+//for very very very large inputs gives TLE
+
+class Solution {
+public:
+    bool canReach(string s, int minJump, int maxJump){
+        int n= s.size();
+        
+        if(s[n-1]=='1') return false;
+        vector<int> visited(n, false);
+        
+        queue<int> q;
+        
+        q.push(0);
+        visited[0]= true;
+        while(!q.empty()){
+            auto i= q.front();
+            q.pop();
+            if(i==n-1) return true;
+            for(int j=i+minJump; j<=min(i+maxJump; n-1); j++){
+                if(!visited[j] and s[j]=='0'){
+                    visited[j]= true;
+                    q.push(j);
+                }
+            }
+        }
+        return false;
+    }
+};
+
+
+
+optimized sol^ has small variation
+refer this link.
+
+https://leetcode.com/problems/jump-game-vii/discuss/1224963/BFS-C%2B%2B-Explained
