@@ -1,3 +1,4 @@
+problem: 
 
 You are given a perfect binary tree where all leaves are on the same level, 
 and every parent has two children. The binary tree has the following definition:
@@ -47,3 +48,37 @@ public:
 };
 
 
+
+
+slight variation of this
+
+problem link:
+https://www.educative.io/m/connect-all-siblings
+
+
+//Connect All Siblings
+
+Given the root to a binary tree where each node has an additional pointer called sibling (or next),
+connect the sibling pointer to the next node in the same level. 
+The last node in each level should point to the first node of the next level in the tree.
+
+
+ Node* connect(Node* root) {
+        if(root==NULL) return root;
+      queue<Node*> q;
+        q.push(root);
+        
+        while(!q.empty()){
+           
+                Node* front=q.front();
+                q.pop();
+                
+ 
+                if(front->left) q.push(front->left);
+                if(front->right) q.push(front->right);
+                
+                  front->next= size ? q.front() : NULL;
+            }
+        }
+        return root;
+    }
