@@ -1,0 +1,91 @@
+problem link:
+https://www.geeksforgeeks.org/best-meeting-point-2d-binary-array/
+
+
+problem :
+You are given a 2D grid of values 0 or 1, where each 1 marks the home of someone in a group.
+And the group of two or more people wants to meet and minimize the total travel distance.
+They can meet anywhere means that there might be a home or not.
+ 
+
+The distance is calculated using Manhattan Distance, where distance(p1, p2) = |p2.x – p1.x| + |p2.y – p1.y|.
+Find the total distance that needs to be traveled to reach the best meeting point (Total distance traveled is minimum).
+
+
+
+Input : grid[][] = {{1, 0, 0, 0, 1}, 
+                   {0, 0, 0, 0, 0},
+                   {0, 0, 1, 0, 0}};
+Output : 6
+
+Best meeting point is (0, 2).
+Total distance traveled is 2 + 2 + 2 = 6
+
+
+
+
+Input : grid[3][5] = {{1, 0, 1, 0, 1},
+                     {0, 1, 0, 0, 0}, 
+                     {0, 1, 1, 0, 0}};
+Output : 11
+
+
+
+This solution uses a ‘centroid’ to find the minimum distance travelled point.
+
+The centroid of a two-dimensional region is the arithmetic mean or average position of all the points.
+We can calculate the centroid of all the points with people on the grid and that will be the minimum distance
+travelled point. It can be calculated as follows:
+
+centroid = [(x1+x2+x3....+xn)/n , (y1+y2+y3+....+yn)/3 ]
+
+It is the average of x-coordinates and y-coordinates.
+
+
+
+
+INTUTION : Collect x-coordinates of all people, collect y-coordinates of all people and
+then Find the Median (by sorting) of x an y coordinates separately
+That median coordinate will be the best pointing point. Now, find distance of all people with this median point
+
+
+class Solution {
+public:
+    int minTotalDistance(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+        vector<int> xCoord;
+        vector<int> yCoord;
+
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                if(grid[i][j] == 1) {
+                    xCoord.push_back(i);
+                    yCoord.push_back(j);
+                }
+            }
+        }
+
+//sort the pts to find median
+        sort(begin(xCoord), end(xCoord));
+        sort(begin(yCoord), end(yCoord));
+
+//median is mid element
+        int l = xCoord.size()/2;
+        int x = xCoord[l];
+        int y = yCoord[l];
+
+
+//find the dis of 3 pts from mid
+        int d = 0;
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                if(grid[i][j] == 1) {
+                    d += abs(x-i) + abs(y-j);
+                }
+            }
+        }
+
+        return d;
+    }
+};
