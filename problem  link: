@@ -1,0 +1,56 @@
+problem  link:
+
+https://leetcode.com/problems/count-good-nodes-in-binary-tree/
+
+Given a binary tree root, a node X in the tree is named good if in the path from root to X 
+there are no nodes with a value greater than X.
+Return the number of good nodes in the binary tree.
+
+
+Input: root = [3,1,4,3,null,1,5]
+Output: 4
+Explanation: Nodes in blue are good.
+Root Node (3) is always a good node.
+Node 4 -> (3,4) is the maximum value in the path starting from the root.
+Node 5 -> (3,4,5) is the maximum value in the path
+Node 3 -> (3,1,3) is the maximum value in the path.
+
+
+
+Input: root = [3,3,null,4,2]
+Output: 3
+Explanation: Node 2 -> (3, 3, 2) is not good, because "3" is higher than it.
+
+
+//so we need to  traverse through the tree
+//so we need to keep  track of the max element so far and for each node we need to check
+
+===>if the element at a node is < max , then that node is not good node
+===> if it is >max then that is good node
+
+
+we can use preorder traversal with slight variation to incorporate max val,seen so far
+
+
+class Solution {
+    int ans=0;
+    void pre(TreeNode* root,int max){
+       
+       if(!root)return;
+        
+        if(root->val >= max){ ans++; 
+        max=root->val; 
+        }
+        
+        pre(root->left,max);
+        pre(root->right,max);
+    }
+public:
+    int goodNodes(TreeNode* root) {
+        pre(root,INT_MIN);
+        return ans;
+    }
+};
+
+
+we need not pass max val by reference,bacause for each root to node path max varies.
