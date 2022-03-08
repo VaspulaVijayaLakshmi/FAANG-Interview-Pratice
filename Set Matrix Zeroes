@@ -1,0 +1,65 @@
+problem:
+https://leetcode.com/problems/set-matrix-zeroes/
+
+
+ 
+Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+
+You must do it in place.
+
+ 
+ method-1: time O(N*M)
+            space(M+N)
+
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+      
+        int rows=matrix.size();
+        int cols=matrix[0].size();
+        
+        vector<bool> rowSetter(rows,false),colSetter(cols,false);
+        
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                
+                if(matrix[i][j]==0){
+               
+                    //if the element ta matrix as 0
+                    //mark that row and col to be converted into  zero row
+                    //and zero matrix
+                    
+                    rowSetter[i]=true;
+                    colSetter[j]=true;
+                }
+            }
+        }
+        
+        
+       //for each element in rowsetter
+        //check if that any row is marked to converted into zero
+        //if yes,then make that row as zero row
+       
+         for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                
+                if(rowSetter[i] || colSetter[j] )
+                    matrix[i][j]=0;
+                }
+             }
+        
+    }
+};
+
+
+
+
+Method-2: space O(1)
+          time complexity O(M*N)
+          
+          
+//instead of  using extra rowsetter and col setter.
+//we can use 1st row and 1 st col .
+
+
+
