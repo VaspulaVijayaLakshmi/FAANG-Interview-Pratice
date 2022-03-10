@@ -16,7 +16,69 @@ Example 2:
 Input: nums = []
 Output: []
 
-///////////method-1
+
+
+// //mehtod-1 using set
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+         
+          int n=nums.size();
+        
+        if(nums.size()<3) return {};
+        
+        
+      set<vector<int> > st;
+        
+        //o(nlogn)
+        sort(nums.begin(),nums.end());
+       
+        
+        for(int i=0;i<n-2;i++){
+             
+           if(nums[i]>0) continue;
+            
+          int low=i+1;
+          int high=n-1;
+            
+         
+              
+          while(low<high){
+           
+            
+              int sum=nums[low]+nums[high]+nums[i];
+              
+              if(sum==0){
+                 st.insert({nums[i],nums[low],nums[high]});
+                  low++;
+                  high--;
+              }
+              
+              
+              else if(sum>0)
+                  high--;
+              
+              
+              else if(sum<0)
+                  low++;
+          }  
+            
+            
+            
+        }
+        
+        vector<vector<int>> res(st.begin(),st.end());
+        return res;
+        
+       
+    }
+};
+
+
+
+
+
+///////////method-2
 
 
 class Solution {
