@@ -48,3 +48,40 @@ public:
         
     }
 };
+
+
+
+
+
+//method-2
+
+
+
+ void generateSubsets(vector<int>& nums,vector<vector<int>> &res,
+                          vector<int> &temp,int currIndex){
+        
+            res.push_back(temp);
+            
+        for(int i=currIndex;i<nums.size();i++){
+            
+            temp.push_back(nums[i]);
+            generateSubsets(nums,res,temp,i+1);
+            temp.pop_back();
+            
+        }
+        
+        
+        
+    }
+    
+    
+    vector<vector<int>> subsets(vector<int>& nums) {
+       
+         vector<vector<int>> res;
+         vector<int> temp;
+        
+        generateSubsets(nums,res,temp,0);
+        return res;
+        
+    }
+};
