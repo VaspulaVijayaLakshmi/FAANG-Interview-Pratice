@@ -1,0 +1,99 @@
+Given an integer array nums, return the length of the longest strictly increasing subsequence.
+
+A subsequence is a sequence that can be derived from an array by deleting some or no 
+elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
+
+ 
+
+Example 1:
+
+Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+Example 2:
+
+Input: nums = [0,1,0,3,2,3]
+Output: 4
+Example 3:
+
+Input: nums = [7,7,7,7,7,7,7]
+Output: 1
+
+
+
+We need to find maximum increasing subsequence length. In the brute-force approach, we can model this problem as -
+
+If the current element is greater than the previous element, then we can either pick it or dont 
+pick it because we may get a smaller element somewhere ahead which is greater than previous and picking that would be optimal. So we try both options.
+If the current element is smaller or equal to previous element, it can't be picked.
+
+
+
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        return solve(nums, 0, INT_MIN);
+    }
+    
+    
+    int solve(vector<int>& nums, int i, int prev) {
+        if(i >= size(nums)) return 0;                                // cant pick any more elements
+        
+        int take = 0,int dontTake =0;
+        dontTake=solve(nums, i + 1, prev);           // try skipping the current element
+        
+        if(nums[i] > prev) 
+        take = 1 + solve(nums, i + 1, nums[i]);   // or pick it if it is greater than previous picked element
+        
+        
+        return max(take, dontTake);                                  // return whichever choice gives max LIS
+    }
+};
+Time Complexity : O(2N), where N is the size of nums. 
+At each index, we have choice to either take or not take the element and we explore both ways. So, we 2 * 2 * 2...N times = O(2^N)
+Space Complexity : O(N), max recursive stack depth.
+
+
+
+
+
+
+//this sol not undertsood
+//rec+memo
+//top down
+class Solution {
+public:
+
+    vector<vector<int>> dp;
+    int lengthOfLIS(vector<int>& nums) {
+    
+        dp.resize(size(nums), vector<int>(1+size(nums), -1));   // dp[i][j] denotes max LIS starting from i when nums[j] is previous picked element
+        return solve(nums, 0, -1);
+    }
+    
+    
+    
+    int solve(vector<int>& nums, int i, int prev_i) {
+        if(i >= size(nums)) return 0;
+        
+        if(dp[i][prev_i+1] != -1) 
+        return dp[i][prev_i+1];
+        
+        
+        
+        int take = 0;
+        in dontTake = solve(nums, i + 1, prev_i);
+        
+        if(prev_i == -1 || nums[i] > nums[prev_i]) 
+        take = 1 + solve(nums, i + 1, i); // try picking current element if no previous element is chosen or current > nums[prev_i]
+        
+        
+        return dp[i][prev_i+1] = max(take, dontTake);
+    }
+};
+
+
+
+
+
