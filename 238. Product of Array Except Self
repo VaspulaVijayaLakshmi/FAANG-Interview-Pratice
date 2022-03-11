@@ -1,0 +1,98 @@
+We are given an array nums and need to return an array ans where ans[i] contains product of all elements in nums except nums[i].
+
+✔️ Solution - I (Calculate product & divide by self)
+
+We can simply calculate product of the whole array and for each element in nums, 
+divide the product by nums[i]. This effectively leaves us with product of whole array except self at each index. 
+We need to take care of zeros that may occur in the array -
+
+1. If there are more than one 0s in nums, the result is an array consisting of all 0.
+2. If there is a single 0 in nums, then the result is an array consisting of all 0 except at 
+the index where there was 0 in nums, which will contain product of rest of array.
+3. If there's no 0 in nums, then the result is an array ans where ans[i] = prod / nums[i] (prod = product of all elements in nums).
+
+C++
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int prod = 1, zeroCnt = count(begin(nums), end(nums), 0);
+        if(zeroCnt > 1) return vector<int>(size(nums));               // Case-1
+        for(auto c : nums) 
+            if(c) prod *= c;                                          // calculate product of all elements except 0
+        for(auto& c : nums)
+            if(zeroCnt) c = c ? 0 : prod;                             // Case-2
+            else c = prod / c;                                        // Case-3
+        return nums;
+    }
+};
+
+
+
+
+
+
+//method-2
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> ans(n);
+        vector<int> left_Product(n);
+        vector<int> right_Product(n);
+        
+        left_Product[0] = 1;
+        for(int i = 1; i < nums.size(); i++){
+            left_Product[i] = left_Product[i - 1] * nums[i - 1];
+        }
+        
+        right_Product[n - 1] = 1;
+        for (int j = n - 2; j >= 0; j--) {
+            right_Product[j] = right_Product[j + 1] * nums[j + 1];
+        }
+        
+        for (int k = 0; k < n; k++) {
+            ans[k]= left_Product[k] * right_Product[k];
+        }
+        
+        return ans;
+    }
+};
+TC :: O(n) and SC :: O(n)
+
+
+
+
+
+
+
+
+
+
+//more optimized
+//dry run this sol for better understanding
+
+
+class Solution {
+public:
+   
+vector<int> productExceptSelf(vector<int>& nums) {
+    int n = nums.size();
+    
+    int prefix = 1, suffix = 1;
+    
+    vector<int> prod(n,1);
+    for (int i = 0;i<n;i++) {
+        
+        prod[i]*=prefix;
+        prefix*=nums[i];
+        
+        
+        prod[n-i-1]*=suffix;
+        suffix*=nums[n-i-1];
+    }
+    return prod;
+}
+};
+
