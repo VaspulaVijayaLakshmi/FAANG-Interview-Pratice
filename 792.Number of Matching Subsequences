@@ -1,0 +1,78 @@
+Given a string s and an array of strings words, return the number of words[i] that is a subsequence of s.
+
+A subsequence of a string is a new string generated from the original string with some characters (can be none)
+deleted without changing the relative order of the remaining characters.
+
+For example, "ace" is a subsequence of "abcde".
+ 
+
+Example 1:
+
+Input: s = "abcde", words = ["a","bb","acd","ace"]
+Output: 3
+Explanation: There are three strings in words that are a subsequence of s: "a", "acd", "ace".
+Example 2:
+
+Input: s = "dsahjpjauf", words = ["ahjpjau","ja","ahbwzgqnuk","tnmlanowax"]
+Output: 2
+
+
+
+
+class Solution {
+public:
+    
+    
+      bool isSubsequence(string s, string t) {
+ 
+        int idx1=0;
+        int idx2=0;
+        int count=0;
+        
+        
+        while(idx1<s.length() && idx2<t.length()){
+           
+            if(s[idx1]==t[idx2]){
+                idx1++;
+                idx2++;
+                count++;
+            }
+            
+            else
+                idx2++;
+             }
+        
+        return count == s.length() ? true :false; 
+        
+    }
+    
+    
+    int numMatchingSubseq(string s, vector<string>& words) {
+        
+        int res=0;
+        unordered_map<string,int> mp;
+        
+        for(int i=0;i<words.size();i++){
+              mp[words[i]]++;
+        }
+        
+        for(auto itr:mp){
+            
+            
+            if(isSubsequence(itr.first,s)) 
+                res=res+itr.second;
+        }
+            
+        
+        
+        return res;
+    }
+};
+
+
+
+//checking for each word gives TLE
+// Input:
+// wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+// ["wp","wp","wp","wp","wp","wp","wp"]
+ 
