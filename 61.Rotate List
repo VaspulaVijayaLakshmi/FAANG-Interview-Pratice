@@ -1,0 +1,59 @@
+Given the head of a linked list, rotate the list to the right by k places.
+
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+
+Input: head = [0,1,2], k = 4
+Output: [2,0,1]
+
+
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+      
+      
+        if(head==NULL || k==0) return head;
+        
+        
+        ListNode* curr=head;
+        int size=1;
+        while(curr->next!=NULL){
+            size++;
+            curr=curr->next;
+        }
+        
+       // cout<<size<<"\n";
+        //make the last element to point to head 
+        curr->next=head;
+        
+        
+        k=k%size;
+        int pos=size-k;
+       // cout<<k<<"    "<<pos<<"\n";
+        
+        curr=head;
+        while(--pos)
+            curr=curr->next;
+        
+       // cout<<curr->val<<"\n";
+     head= curr->next;
+    curr->next=NULL;
+    return head;
+    }
+};
+
+
+//eg: we have 
+// 1->2->3->4->5->NULL
+// 1->2->3->4->5->1
+
+//  so now the linked list becomes cicular ll
+//now we have to go to last but k'th element
+//for eg:if size=5 and k=2;
+//we need to traverse to last but 2nd elemnt
+//os we need to traverse 5-3(size-k) elemensts.
+
+//eg: 1->2->3->4->5->1
+//so  "curr" is pointing to 3
+//we need to make 3->next==4 as head
+//and 3->next=NULL
