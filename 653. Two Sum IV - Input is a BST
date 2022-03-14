@@ -1,0 +1,27 @@
+Given the root of a Binary Search Tree and a target number k, return true 
+if there exist two elements in the BST such that their sum is equal to the given target.
+
+Input: root = [5,3,6,2,4,null,7], k = 9
+Output: true
+
+Input: root = [5,3,6,2,4,null,7], k = 28
+Output: false
+
+
+class Solution {
+    
+    private: unordered_set<int> st;
+     
+public:
+    
+    bool findTarget(TreeNode* root, int k) {
+      if(root==NULL) return false;
+       
+        if(st.count(k-root->val))return true;
+        st.insert(root->val);
+        
+       return findTarget(root->left,k) || 
+             findTarget(root->right,k);
+        
+    }
+};
