@@ -23,6 +23,26 @@ Output: 3
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
+      
+        int res=0;
+        
+        for(int i=0;i<nums.size();i++){
+            res^=nums[i];
+            res^=i;
+        }
+        
+        return res;
+      
+        
+    }
+};
+
+
+__________________________________________________________________________________________________
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
      
         int i=0;
         
