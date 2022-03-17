@@ -6,6 +6,27 @@ If there is no such subarray, return 0 instead.
 
  
 
+
+  //this only works for all positive intergers.
+    
+    // [2,7,3,-8,4,10] target=12
+    // consider this 
+    //[2+7+3]  13>13 so size of window (end-strt+1) = 2-0+1=2
+     //now until sum<12 shrink the window
+   // so strt++
+    // now window is [7,3] sum<12 so expand the window 
+    //[7,3,-8] =2<12
+    //[7,3,-8,4]=6<12
+    //[7,3,-8,4,10] 16>12 window size=(5-1+1)=5
+    
+    //so min size window = 3
+    // but we have subarray [4,10]=14>12 size=2
+    //but our sliding window will not reach this.
+
+
+
+
+
 Example 1:
 
 Input: target = 7, nums = [2,3,1,2,4,3]
