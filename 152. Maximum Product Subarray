@@ -22,23 +22,67 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 
 
 
+
+
+// class Solution {
+// public:
+//     int maxProduct(vector<int>& nums) {
+       
+//        int ans=INT_MIN;
+//         int maxprod=1,minprod=1;
+        
+//         for(int n:nums){
+            
+            
+         // multiplied by a negative makes big number smaller, small number bigger
+        // so we redefine the extremums by swapping them
+//             if(n<0) swap(maxprod,minprod);
+            
+            
+             // max/min product for the current number is either the current number itself
+        // or the max/min by the previous number times the current one
+//             maxprod=max(maxprod*n,n);
+//             minprod=min(minprod*n,n);
+            
+//             ans=max(ans,maxprod);
+//         }
+        
+        
+//         return ans; 
+//     }
+// };
+
+
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-       int ans=INT_MIN;
-        int maxprod=1,minprod=1;
+       
+         int n= nums.size();
+         int ans=nums[0];
+
         
-        for(int n:nums){
+        int prev_max_prod=nums[0] , prev_min_prod=nums[0];
+        
+        int curr_max_prod=nums[0] , curr_min_prod=nums[0];
+        
+        
+        for(int i=1;i<n;i++){
+       
+            curr_max_prod = max( max( curr_max_prod*nums[i] , prev_min_prod*nums[i] ) ,nums[i] );
+            curr_min_prod = min( min( curr_min_prod*nums[i] , prev_max_prod*nums[i] ),nums[i] );
             
-            if(n<0) swap(maxprod,minprod);
+            ans = max(ans,curr_max_prod);
             
-            maxprod=max(maxprod*n,n);
-            minprod=min(minprod*n,n);
+            prev_max_prod = curr_max_prod;
+            prev_min_prod = curr_min_prod;    
             
-            ans=max(ans,maxprod);
         }
         
         
-        return ans;
+        return ans; 
     }
 };
+
+
+
+
