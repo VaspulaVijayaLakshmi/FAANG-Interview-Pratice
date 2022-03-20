@@ -1,0 +1,47 @@
+Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+
+Integers in each row are sorted from left to right.
+The first integer of each row is greater than the last integer of the previous row.
+
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
+Output: true
+
+
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
+Output: false
+
+
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& mat, int target) {
+       
+        int rows=mat.size();
+        int cols=mat[0].size();
+        
+        int size=rows*cols;
+        int strt=0,end=size-1;
+        
+        while(strt<=end){
+         
+            int mid=strt+(end-strt)/2;
+            
+            if(mat[mid/cols][mid%cols]==target)
+              return true;
+            
+            if (mat[mid / cols][mid % cols] < target) 
+                    strt = mid + 1;
+                
+                else 
+                    end = mid - 1;
+                
+            
+        }
+        
+        return false;
+    }
+};
+
+
+
+       
