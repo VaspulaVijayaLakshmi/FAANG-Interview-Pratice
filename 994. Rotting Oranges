@@ -1,0 +1,123 @@
+You are given an m x n grid where each cell can have one of three values:
+
+0 representing an empty cell,
+1 representing a fresh orange, or
+2 representing a rotten orange.
+Every minute, any fresh orange that is 4-directionally adjacent to a rotten orange becomes rotten.
+
+Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1.
+
+Example 1:
+
+
+Input: grid = [[2,1,1],[1,1,0],[0,1,1]]
+Output: 4
+
+
+Example 2:
+
+Input: grid = [[2,1,1],[0,1,1],[1,0,1]]
+Output: -1
+Explanation: The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.
+
+
+Example 3:
+
+Input: grid = [[0,2]]
+Output: 0
+Explanation: Since there are already no fresh oranges at minute 0, the answer is just 0.
+
+
+
+//MultiSource BFS
+class Solution {
+public:
+    int orangesRotting(vector<vector<int>>& grid) {
+        
+        int rows=grid.size();
+        int cols=grid[0].size();
+        
+        
+        queue<pair<int,int>> q;
+        
+        //the 4 directions that we can move from each cell
+        vector<int> dX={-1,+1,0,0};
+        vector<int> dY={0,0,-1,+1};
+        
+        
+        //we will push all he rotten oranges indices 
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                
+                if(grid[i][j]==2){
+                    q.push({i,j});
+                }
+            }
+        }
+        
+        
+        //set the min time as -1 
+        //why not 0? because the first set of rotten indices will take
+        //0 mins 
+        
+        int mins=-1;
+        
+         while(!q.empty()){
+            
+            int sz=q.size();
+            
+             //prcoess all the oranges in the level
+            while(sz--){
+                
+                pair<int,int> cor=q.front();
+                q.pop();
+                
+                
+                //for each cell,move all directions
+                for(int i=0;i<4;i++){
+                
+                int r= cor.first+dX[i];
+                int c= cor.second+dY[i];
+                    
+            //if the cell is within the bounds  and if it is a fresh orange
+            //then mark it as rooten and push it into queue
+            if(r>=0 && r<rows &&  c>=0 && c<cols &&  grid[r][c]==1){
+                  
+                     grid[r][c]=2;
+                     q.push({r,c});
+            }   
+                    
+            }
+                
+            }
+             //one level  of oranges set  has been marked ,and we are moving to 
+             //next level
+             mins++;
+        }
+       
+       
+        //check if there are any fresh oranges left.
+        //if they are left then return -1
+         for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                
+                if(grid[i][j]==1){
+                    return -1;
+                }
+            }
+        }
+        
+        
+        //if mins==-1,then there were no rotten oranges ,so time taken is 0
+    //or there are no fresh oranges ,so it will take 0 mins         
+        return mins==-1 ? 0 : mins;
+        
+    }
+};
+
+
+
+
+
+
+
