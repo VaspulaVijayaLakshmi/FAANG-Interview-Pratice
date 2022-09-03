@@ -25,43 +25,58 @@ Output: 0
 
 class Solution {
 public:
-    long long zeroFilledSubarray(vector<int>& nums) {
+    int numberOfArithmeticSlices(vector<int>& nums) {
         
         int n=nums.size();
         vector<int> dp(n,0);
-        long long res=0;
+        int ans=0;
         
-        if(nums[0]==0){
-            dp[0]=1;
-            res=1;
-        }
+        if(n<3) 
+            return 0;
         
-        for(int i=1;i<n;i++){
+        for(int i=2;i<n;++i){
             
-            if(nums[i]==0){
+            if(nums[i]-nums[i-1] == nums[i-1]-nums[i-2]){
                 dp[i]=dp[i-1]+1;
-                res+=dp[i];
+                ans+=dp[i];
             }
+            
         }
         
-        return res;
         
+        return ans;
     }
 };
 
-// nums=[1,3,0,0,2,0,0,4]
-// dp=  [0,0,0,0,0,0,0,0]
 
-//      [0,0,1,2,0,1,2,0]
-     
-// idx-2    [0]
-// idx-3    [0] [0,0]
-         
-    
-// idx-5      [0]
-// idx-6      [0] [0,0]
 
-// so we have total 6 subsets
-     
-    
-    
+
+// For example we have [1,2,3] with 1 correct subset, and add 4 to it.
+// That mean we got new subsets 1234 and 234
+
+//so total subsets = [1,2,3] [2,3,4] [1,2,3,4]
+
+
+// [1,2,3,4,5]
+// Which subsets did we got? 12345, 2345, 345
+
+// so for [1,2,3] we have 1 subarray
+//        [1,2,3,4] we have [2,3,4] and [1,2,3,4]
+        
+//     so total =3
+
+
+
+
+// Lets add on more digit, we had [1,2,3,4,5] with 6 correct subsets. 
+//Now we will have [1,2,3,4,5,6].
+           // dp = [0,0,1,2,3,4]
+
+//                   123
+//                   234  1234
+//                   345  2345 12345
+//                   456  3456 23456 123456    
+
+                      
+// dp = [0,0,1,2,3,4]                      
+
